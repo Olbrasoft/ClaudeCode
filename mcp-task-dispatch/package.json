@@ -1,0 +1,31 @@
+{
+  "name": "mcp-task-dispatch",
+  "version": "1.0.0",
+  "description": "MCP Server for dispatching tasks from VirtualAssistant to Claude Code",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "mcp",
+    "claude",
+    "task-dispatch",
+    "virtualassistant"
+  ],
+  "author": "Olbrasoft",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
