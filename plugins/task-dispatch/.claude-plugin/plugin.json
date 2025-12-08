@@ -1,0 +1,8 @@
+{
+  "name": "task-dispatch",
+  "version": "1.0.0",
+  "description": "Loads pending tasks from VirtualAssistant database on session start and saves results on session stop",
+  "author": "Olbrasoft",
+  "repository": "https://github.com/Olbrasoft/ClaudeCode",
+  "hooks": "../hooks/hooks.json"
+}

@@ -1,0 +1,26 @@
+{
+  "hooks": [
+    {
+      "matcher": {
+        "event": "SessionStart"
+      },
+      "hooks": [
+        {
+          "type": "command",
+          "command": "../scripts/load-task.sh"
+        }
+      ]
+    },
+    {
+      "matcher": {
+        "event": "Stop"
+      },
+      "hooks": [
+        {
+          "type": "command",
+          "command": "../scripts/save-result.sh"
+        }
+      ]
+    }
+  ]
+}
