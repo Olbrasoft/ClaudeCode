@@ -47,7 +47,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "send_notification",
         description:
-          "Send a notification to VirtualAssistant database. " +
+          "Send a notification to VirtualAssistant (will be spoken aloud via TTS). " +
           "Use this to inform about your work progress: starting work, progress updates, or completion. " +
           "Write notifications in Czech language, be concise (1-2 sentences). " +
           "Include issue number if working on a specific issue.",
@@ -89,7 +89,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 
 /**
- * Send notification to VirtualAssistant API
+ * Send notification to VirtualAssistant TTS API
  */
 async function handleSendNotification(
   params: SendNotificationParams
@@ -102,14 +102,14 @@ async function handleSendNotification(
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/api/notifications`, {
+    const response = await fetch(`${API_BASE_URL}/api/tts/notify`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        agentId: "Claude Code",
         text: params.text.trim(),
+        source: "claude-code",
       }),
     });
 
