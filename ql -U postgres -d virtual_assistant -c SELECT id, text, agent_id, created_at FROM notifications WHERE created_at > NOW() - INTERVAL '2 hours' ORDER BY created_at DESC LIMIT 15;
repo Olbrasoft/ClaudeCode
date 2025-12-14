@@ -1,0 +1,21 @@
+[0;1;32m●[0m virtual-assistant.service - VirtualAssistant Service
+     Loaded: loaded (]8;;file://debian/home/jirka/.config/systemd/user/virtual-assistant.service\/home/jirka/.config/systemd/user/virtual-assistant.service]8;;\; [0;1;38:5:185mdisabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Sun 2025-12-14 17:16:01 CET; 28min ago
+ Invocation: 0b5837938af441e88b1a7eb781ad418d
+   Main PID: 650576 (VirtualAssistan)
+      Tasks: 38[0;38;5;245m (limit: 38172)[0m
+     Memory: 139.7M (peak: 141M)
+        CPU: 7.003s
+     CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/virtual-assistant.service
+             └─[0;38;5;245m650576 /home/jirka/virtual-assistant/main/VirtualAssistant.Service[0m
+
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]: info: Olbrasoft.VirtualAssistant.Service.Program[0]
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]:       Notification 46 stored in database from agent opencode
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]: info: Microsoft.AspNetCore.Http.Result.OkObjectResult[1]
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]:       Setting HTTP status code 200.
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]: info: Microsoft.AspNetCore.Http.Result.OkObjectResult[3]
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]:       Writing value of type '<>f__AnonymousType5`5' as Json.
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]: info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]:       Executed endpoint 'HTTP: POST /api/tts/notify'
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]: info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+pro 14 17:44:22 debian VirtualAssistant.Service[650576]:       Request finished HTTP/1.1 POST http://localhost:5055/api/tts/notify - 200 - application/json;+charset=utf-8 2.1930ms
