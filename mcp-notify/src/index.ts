@@ -17,6 +17,7 @@ const API_BASE_URL = process.env.VIRTUAL_ASSISTANT_URL || "http://localhost:5055
 
 interface NotifyParams {
   text: string;
+  issueIds?: number[];
 }
 
 interface NotificationResult {
@@ -57,6 +58,11 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             text: {
               type: "string",
               description: "Notification text in Czech (e.g., 'Zahajuji praci na issue #255')",
+            },
+            issueIds: {
+              type: "array",
+              items: { type: "number" },
+              description: "Optional array of GitHub issue numbers related to this notification",
             },
           },
           required: ["text"],
@@ -102,15 +108,21 @@ async function handleNotify(
   }
 
   try {
+    const requestBody: Record<string, unknown> = {
+      text: params.text.trim(),
+      source: "claude-code",
+    };
+
+    if (params.issueIds && params.issueIds.length > 0) {
+      requestBody.issueIds = params.issueIds;
+    }
+
     const response = await fetch(`${API_BASE_URL}/api/notifications`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        text: params.text.trim(),
-        source: "claude-code",
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
