@@ -1,0 +1,18 @@
+{
+  "name": "ClaudeCode",
+  "owner": {
+    "name": "Olbrasoft"
+  },
+  "plugins": [
+    {
+      "name": "task-dispatch",
+      "source": "./plugins/task-dispatch",
+      "description": "Loads pending tasks from VirtualAssistant database on session start and saves results on session stop"
+    },
+    {
+      "name": "notify",
+      "source": "./plugins/notify-plugin",
+      "description": "Send notifications to VirtualAssistant database"
+    }
+  ]
+}

@@ -1,24 +1,30 @@
 ---
-description: Send a notification to VirtualAssistant database
-args:
-  text:
-    type: string
-    description: The notification message text
-    required: true
+name: notify
+description: Send notification to VirtualAssistant about your work progress
 ---
 
-# Notify Command
+Send a notification to VirtualAssistant database about your current work.
 
-**Purpose**: Store notification in VirtualAssistant database with Claude Code as agent_id.
+The notification should:
+- Describe what you're doing (starting work, progress update, completion)
+- Be written in Czech language
+- Be concise (1-2 sentences)
+- Include issue number if working on a specific issue
 
-**How to use this command:**
+Examples:
+- "Zahajuji praci na issue #255"
+- "Vytvoril jsem Notification entitu"
+- "Dokoncil jsem issue #255"
 
-1. Execute HTTP POST to `http://localhost:5055/api/notifications`
-2. Send JSON body: `{"agentId": "Claude Code", "text": "<text>"}`
-3. Replace `<text>` with the actual notification text from args
-4. Use curl or equivalent HTTP client
-5. Example: `curl -X POST http://localhost:5055/api/notifications -H "Content-Type: application/json" -d '{"agentId":"Claude Code","text":"Started working on issue #123"}'`
+After writing the notification text, call the VirtualAssistant API:
+- Endpoint: `http://localhost:5055/api/notifications`
+- Method: POST
+- Headers: `Content-Type: application/json`
+- Body: `{"agentId": "Claude Code", "text": "<your notification text>"}`
 
-**Important**: Always set `agentId` to exactly "Claude Code" (not "Unknown").
-
-**When to use**: Whenever you want to notify the user about significant progress, completion, or need for attention.
+Use curl to make the HTTP request:
+```bash
+curl -X POST http://localhost:5055/api/notifications \
+  -H "Content-Type: application/json" \
+  -d '{"agentId": "Claude Code", "text": "<your notification text>"}'
+```

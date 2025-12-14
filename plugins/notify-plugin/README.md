@@ -1,44 +1,44 @@
 # Notify Plugin for Claude Code
 
-Send notifications from Claude Code to VirtualAssistant database.
+Plugin that provides a `/notify` command to send notifications to VirtualAssistant database.
 
 ## Installation
 
-From Claude Code terminal:
-
+### 1. Add marketplace (if not already added)
 ```bash
-/plugin marketplace add /home/jirka/GitHub/Olbrasoft/ClaudeCode/plugins
-/plugin install notify@olbrasoft-plugins
+/plugin marketplace add /home/jirka/GitHub/Olbrasoft/ClaudeCode
 ```
 
-Restart Claude Code to activate the plugin.
+### 2. Install the plugin
+```bash
+/plugin install notify@ClaudeCode
+```
+
+### 3. Restart Claude Code
+Restart to apply changes.
 
 ## Usage
 
-Use the `/notify` command to send notifications:
-
 ```
-/notify Started working on issue #255
+/notify <message>
 ```
 
-This will:
-1. Store notification in VirtualAssistant database
-2. Set `agent_id` to "Claude Code"
-3. Allow VirtualAssistant to track your activity
+### Examples
+```
+/notify Zahajuji praci na issue #255
+/notify Vytvoril jsem Notification entitu
+/notify Dokoncil jsem issue #255
+```
 
-## How It Works
+## API Endpoint
 
-The plugin adds a `/notify` command that:
-- Sends HTTP POST to `http://localhost:5055/api/notifications`
-- Includes `agentId: "Claude Code"` in JSON body
-- Stores your notification text in the database
+The plugin sends notifications to:
+- **URL**: `http://localhost:5055/api/notifications`
+- **Method**: POST
+- **Headers**: `Content-Type: application/json`
+- **Body**: `{"agentId": "Claude Code", "text": "<message>"}`
 
 ## Requirements
 
-- VirtualAssistant service running on `localhost:5055`
-- Database with `notifications` table created (Issue #255)
-
-## See Also
-
-- Issue #270: Modify Claude Code notification endpoint
-- Issue #271: Remove Claude Code hooks (completed)
+- VirtualAssistant service running on localhost:5055
+- `/api/notifications` endpoint available
