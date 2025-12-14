@@ -15,7 +15,7 @@ import {
 
 const API_BASE_URL = process.env.VIRTUAL_ASSISTANT_URL || "http://localhost:5055";
 
-interface SendNotificationParams {
+interface NotifyParams {
   text: string;
 }
 
@@ -45,7 +45,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       {
-        name: "send_notification",
+        name: "notify",
         description:
           "Send a notification to VirtualAssistant database. " +
           "Use this to inform about your work progress: starting work, progress updates, or completion. " +
@@ -72,9 +72,9 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
-  if (name === "send_notification") {
-    const params = args as unknown as SendNotificationParams;
-    const result = await handleSendNotification(params);
+  if (name === "notify") {
+    const params = args as unknown as NotifyParams;
+    const result = await handleNotify(params);
     return {
       content: [
         {
@@ -91,8 +91,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 /**
  * Send notification to VirtualAssistant API
  */
-async function handleSendNotification(
-  params: SendNotificationParams
+async function handleNotify(
+  params: NotifyParams
 ): Promise<NotificationResult> {
   if (!params.text || typeof params.text !== "string" || params.text.trim() === "") {
     return {
@@ -127,7 +127,7 @@ async function handleSendNotification(
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    console.error("[send_notification] Error:", message);
+    console.error("[notify] Error:", message);
     return {
       success: false,
       error: message,
