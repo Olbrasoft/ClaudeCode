@@ -1,0 +1,13 @@
+{
+  "name": "olbrasoft-plugins",
+  "owner": {
+    "name": "Olbrasoft"
+  },
+  "plugins": [
+    {
+      "name": "notify",
+      "source": "./notify-plugin",
+      "description": "Send notifications to VirtualAssistant database with Claude Code as agent"
+    }
+  ]
+}

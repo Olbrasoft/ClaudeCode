@@ -1,0 +1,8 @@
+{
+  "name": "notify",
+  "description": "Send notifications to VirtualAssistant database",
+  "version": "1.0.0",
+  "author": {
+    "name": "Olbrasoft"
+  }
+}
